@@ -1,0 +1,18 @@
+{
+    "match": {
+        "id": "1041268",
+        "started": false,
+        "finished": false,
+        "date": "2022-06-12",
+        "time": "20:45",
+        "league": "UEFA Nations League - League A"
+    },
+    "homeTeam": {
+        "name": "Switzerland",
+        "logo": "https://apiv3.apifootball.com/badges/2_switzerland.jpg"
+    },
+    "awayTeam": {
+        "name": "Portugal",
+        "logo": "https://apiv3.apifootball.com/badges/23_portugal.jpg"
+    }
+}

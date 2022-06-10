@@ -1,0 +1,21 @@
+{
+    "match": {
+        "started": true,
+        "finished": false,
+        "time": "27",
+        "drawOdd": "8",
+        "league": "UEFA U21 Championship Qualification"
+    },
+    "homeTeam": {
+        "name": "Turkey U21",
+        "logo": "https://apiv3.apifootball.com/badges/9898_turkey-u21.jpg",
+        "score": "0",
+        "victoryOdd": "1.083"
+    },
+    "awayTeam": {
+        "name": "Kazakhstan U21",
+        "logo": "https://apiv3.apifootball.com/badges/9907_kazakhstan-u21.jpg",
+        "score": "0",
+        "victoryOdd": "26"
+    }
+}
