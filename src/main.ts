@@ -51,7 +51,7 @@ WA.onInit().then(async () => {
             // },
             {
                 label:"1",
-                className:"success",
+                className:"primary",
                 callback: () => {
                     value = 1;
                     currentPopup.close();
@@ -81,45 +81,6 @@ WA.onInit().then(async () => {
                                 mise = 100;
                                 currentPopup.close();
                                 action_paris(match_id, value,mise,win)
-                            }
-                        }
-                    ])
-                }
-            },
-            {
-                label:"2",
-                className:"error",
-                callback: () => {
-                    value = 2;
-                    currentPopup.close();
-                    currentPopup = WA.ui.openPopup("parisBlock",`How much ?`,[ 
-                        {
-                            label:"10",
-                            className:"normal",
-                            callback: () => {
-                                mise = 10;
-                                currentPopup.close();
-                                action_paris(match_id, value,mise,lose)
-                            }
-                        },
-                        {
-                            label:"50",
-                            className:"normal",
-                            callback: () => {
-                                mise = 50;
-                                currentPopup.close();
-                                action_paris(match_id, value,mise,lose)
-
-                            }
-                        },
-                        {
-                            label:"100",
-                            className:"normal",
-                            callback: () => {
-                                mise = 100;
-                                currentPopup.close();
-                                action_paris(match_id, value,mise,lose)
-
                             }
                         }
                     ])
@@ -164,7 +125,46 @@ WA.onInit().then(async () => {
                     ])
 
                 }
-            }
+            },
+            {
+                label:"2",
+                className:"primary",
+                callback: () => {
+                    value = 2;
+                    currentPopup.close();
+                    currentPopup = WA.ui.openPopup("parisBlock",`How much ?`,[ 
+                        {
+                            label:"10",
+                            className:"normal",
+                            callback: () => {
+                                mise = 10;
+                                currentPopup.close();
+                                action_paris(match_id, value,mise,lose)
+                            }
+                        },
+                        {
+                            label:"50",
+                            className:"normal",
+                            callback: () => {
+                                mise = 50;
+                                currentPopup.close();
+                                action_paris(match_id, value,mise,lose)
+
+                            }
+                        },
+                        {
+                            label:"100",
+                            className:"normal",
+                            callback: () => {
+                                mise = 100;
+                                currentPopup.close();
+                                action_paris(match_id, value,mise,lose)
+
+                            }
+                        }
+                    ])
+                }
+            },
         ])
 
     })
