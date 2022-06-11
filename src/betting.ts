@@ -29,7 +29,7 @@ function IsVariableUser() {
 // -----  COINS ------
 
 function get_coins() {
-    return WA.player.state.coins.toFixed(1)
+    return parseInt(WA.player.state.coins)
 }
 
 function _set_coins(coins: number) {
@@ -47,6 +47,20 @@ function _IsCoins_after_betting(value:number) {
 
 function get_nbrParis() {
     return WA.player.state.nbrParis
+}
+
+// nombre de match win
+function get_ParisWin() {
+    const tab = WA.player.state.listParis
+    const paris_find = tab.filter((paris) => paris.status === "win")
+    return paris_find.length
+}
+
+// nombre de match lose
+function get_ParisLose() {
+    const tab = WA.player.state.listParis
+    const paris_find = tab.filter((paris) => paris.status === "lose")
+    return paris_find.length
 }
 
 function _add_nbrParis() {
@@ -151,24 +165,24 @@ function evaluate_paris(id:string,) {
 
 // Match 
 
-function start_match() {
-    if (getNextMatch.match.started)
-    return {
-        label:"betting",
-        className:"normal",
-        callback: () => {
-            action_paris(1,20,2.32)
-        }
-    }
-    else
-    return {
-        label:"betting",
-        className:"disabled",
-        callback: () => {
-            console.log("disabled");
-        }
-    }
-}
+// function start_match() {
+//     if (getCurrentMatch.match.started)
+//     return {
+//         label:"betting",
+//         className:"normal",
+//         callback: () => {
+//             action_paris(1,20,2.32)
+//         }
+//     }
+//     else
+//     return {
+//         label:"betting",
+//         className:"disabled",
+//         callback: () => {
+//             console.log("disabled");
+//         }
+//     }
+// }
 
 
-export {IsVariableUser, action_paris, get_coins, get_nbrParis, evaluate_paris, changeStatus_paris, start_match};
+export {IsVariableUser, action_paris, get_coins, get_nbrParis, evaluate_paris, changeStatus_paris, start_match, get_ParisWin, get_ParisLose};
