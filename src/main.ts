@@ -17,15 +17,21 @@ WA.onInit().then(async () => {
 
     await WA.room.onEnterLayer('parisZone').subscribe(async () => {
         // 100 PSG / 83 OM
-        // const matchObj = fetch("http://51.158.122.33:8080/getOdds/100")
+        // const matchObj = await fetch("https://api.foot.kreyzix.com/getOdds/100")
         // .then((res) => {
-        //     console.log(res.json());
+        //     console.log("res %o",res);
+        //     console.log("res.json %o",res.json());
+        //     // return res.json()
+        // }).then((data) => {
+        //     console.log("res %o",data);
         //     // return res.json()
         // })
+        // console.log("matchObj %o",matchObj);
+
         let value :number;
         let mise :number;
 
-        const currentPopup1 = await WA.ui.openPopup("parisBlock",`What your bet ?`,[ 
+        currentPopup = await WA.ui.openPopup("parisBlock",`What your bet ?`,[ 
             // {
             //     label:"Evaluate",
             //     className:"normal",
@@ -38,14 +44,14 @@ WA.onInit().then(async () => {
                 className:"success",
                 callback: () => {
                     value = 1;
-                    currentPopup1.close();
-                    const currentPopup2 = WA.ui.openPopup("parisBlock",`How much ?`,[ 
+                    currentPopup.close();
+                    currentPopup = WA.ui.openPopup("parisBlock",`How much ?`,[ 
                         {
                             label:"10",
                             className:"normal",
                             callback: () => {
                                 mise = 10;
-                                currentPopup2.close();
+                                currentPopup.close();
                                 action_paris(value,mise,2.32)
                             }
                         },
@@ -54,7 +60,7 @@ WA.onInit().then(async () => {
                             className:"normal",
                             callback: () => {
                                 mise = 50;
-                                currentPopup2.close();
+                                currentPopup.close();
                                 action_paris(value,mise,2.32)
                             }
                         },
@@ -63,7 +69,7 @@ WA.onInit().then(async () => {
                             className:"normal",
                             callback: () => {
                                 mise = 100;
-                                currentPopup2.close();
+                                currentPopup.close();
                                 action_paris(value,mise,2.32)
                             }
                         }
@@ -75,14 +81,14 @@ WA.onInit().then(async () => {
                 className:"error",
                 callback: () => {
                     value = 2;
-                    currentPopup1.close();
-                    const currentPopup2 = WA.ui.openPopup("parisBlock",`How much ?`,[ 
+                    currentPopup.close();
+                    const currentPopup = WA.ui.openPopup("parisBlock",`How much ?`,[ 
                         {
                             label:"10",
                             className:"normal",
                             callback: () => {
                                 mise = 10;
-                                currentPopup2.close();
+                                currentPopup.close();
                                 action_paris(value,mise,2.32)
                             }
                         },
@@ -91,7 +97,7 @@ WA.onInit().then(async () => {
                             className:"normal",
                             callback: () => {
                                 mise = 50;
-                                currentPopup2.close();
+                                currentPopup.close();
                                 action_paris(value,mise,2.32)
 
                             }
@@ -101,7 +107,7 @@ WA.onInit().then(async () => {
                             className:"normal",
                             callback: () => {
                                 mise = 100;
-                                currentPopup2.close();
+                                currentPopup.close();
                                 action_paris(value,mise,2.32)
 
                             }
@@ -114,14 +120,14 @@ WA.onInit().then(async () => {
                 className:"normal",
                 callback: () => {
                     value = 0;
-                    currentPopup1.close();
-                    const currentPopup2 = WA.ui.openPopup("parisBlock",`How much ?`,[ 
+                    currentPopup.close();
+                    const currentPopup = WA.ui.openPopup("parisBlock",`How much ?`,[ 
                         {
                             label:"10",
                             className:"normal",
                             callback: () => {
                                 mise = 10;
-                                currentPopup2.close();
+                                currentPopup.close();
                                 action_paris(value,mise,2.32)
 
                             }
@@ -131,7 +137,7 @@ WA.onInit().then(async () => {
                             className:"normal",
                             callback: () => {
                                 mise = 50;
-                                currentPopup2.close();
+                                currentPopup.close();
                                 action_paris(value,mise,2.32)
 
                             }
@@ -141,7 +147,7 @@ WA.onInit().then(async () => {
                             className:"normal",
                             callback: () => {
                                 mise = 100;
-                                currentPopup2.close();
+                                currentPopup.close();
                                 action_paris(value,mise,2.32)
                             }
                         }
