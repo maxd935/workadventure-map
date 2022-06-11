@@ -78,9 +78,9 @@ function _push_listParis(newParis:Object) {
 }
 
 // Créer un Object paris
-function _createVariableParis(value: number, mise: number, cote_match: number){
+function _createVariableParis(match_id:string, value: number, mise: number, cote_match: number){
     const newParis = {
-        idMatch: "ID-match2",
+        idMatch: match_id,
         dateTime: new Date(),
         value: value,
         mise: mise,
@@ -93,9 +93,9 @@ function _createVariableParis(value: number, mise: number, cote_match: number){
 }
 
 // Parier sur un match
-function action_paris(value: number, mise: number, cote_match: number) {
+function action_paris(match_id:string, value: number, mise: number, cote_match: number) {
     if(_IsCoins_after_betting(mise)){
-        _createVariableParis(value, mise, cote_match)
+        _createVariableParis(match_id, value, mise, cote_match)
         var mySound = WA.sound.loadSound("assets/son/sf_sifflet_05.mp3");
         mySound.play();
         WA.chat.sendChatMessage(`I bet ${mise} coins`, WA.player.name);

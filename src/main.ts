@@ -17,16 +17,26 @@ WA.onInit().then(async () => {
 
     await WA.room.onEnterLayer('parisZone').subscribe(async () => {
         // 100 PSG / 83 OM
-        // const matchObj = await fetch("https://api.foot.kreyzix.com/getOdds/100")
-        // .then((res) => {
-        //     console.log("res %o",res);
-        //     console.log("res.json %o",res.json());
-        //     // return res.json()
-        // }).then((data) => {
-        //     console.log("res %o",data);
-        //     // return res.json()
-        // })
-        // console.log("matchObj %o",matchObj);
+        const matchObj = await fetch("https://api.foot.kreyzix.com/getOdds/100")
+        .then(async (res) => {
+            const message = await res.text()
+            if(message === "The next match of this team has not started yet."){
+                console.log("res %o",message);
+            }
+            else{
+                return JSON.parse(message)
+            }
+        })
+
+        console.log(matchObj);
+        
+        // const {win, lose, draw, match_id} = matchObj;
+        const win = 1
+        const lose = 2
+        const draw = 4
+        const match_id = "1164"
+
+        
 
         let value :number;
         let mise :number;
@@ -40,7 +50,7 @@ WA.onInit().then(async () => {
             //     }
             // },
             {
-                label:"Win",
+                label:"1",
                 className:"success",
                 callback: () => {
                     value = 1;
@@ -52,7 +62,7 @@ WA.onInit().then(async () => {
                             callback: () => {
                                 mise = 10;
                                 currentPopup.close();
-                                action_paris(value,mise,2.32)
+                                action_paris(match_id, value,mise,win)
                             }
                         },
                         {
@@ -61,7 +71,7 @@ WA.onInit().then(async () => {
                             callback: () => {
                                 mise = 50;
                                 currentPopup.close();
-                                action_paris(value,mise,2.32)
+                                action_paris(match_id, value,mise,win)
                             }
                         },
                         {
@@ -70,26 +80,26 @@ WA.onInit().then(async () => {
                             callback: () => {
                                 mise = 100;
                                 currentPopup.close();
-                                action_paris(value,mise,2.32)
+                                action_paris(match_id, value,mise,win)
                             }
                         }
                     ])
                 }
             },
             {
-                label:"Lose",
+                label:"2",
                 className:"error",
                 callback: () => {
                     value = 2;
                     currentPopup.close();
-                    const currentPopup = WA.ui.openPopup("parisBlock",`How much ?`,[ 
+                    currentPopup = WA.ui.openPopup("parisBlock",`How much ?`,[ 
                         {
                             label:"10",
                             className:"normal",
                             callback: () => {
                                 mise = 10;
                                 currentPopup.close();
-                                action_paris(value,mise,2.32)
+                                action_paris(match_id, value,mise,lose)
                             }
                         },
                         {
@@ -98,7 +108,7 @@ WA.onInit().then(async () => {
                             callback: () => {
                                 mise = 50;
                                 currentPopup.close();
-                                action_paris(value,mise,2.32)
+                                action_paris(match_id, value,mise,lose)
 
                             }
                         },
@@ -108,7 +118,7 @@ WA.onInit().then(async () => {
                             callback: () => {
                                 mise = 100;
                                 currentPopup.close();
-                                action_paris(value,mise,2.32)
+                                action_paris(match_id, value,mise,lose)
 
                             }
                         }
@@ -116,19 +126,19 @@ WA.onInit().then(async () => {
                 }
             },
             {
-                label:"Draw",
+                label:"x",
                 className:"normal",
                 callback: () => {
                     value = 0;
                     currentPopup.close();
-                    const currentPopup = WA.ui.openPopup("parisBlock",`How much ?`,[ 
+                    currentPopup = WA.ui.openPopup("parisBlock",`How much ?`,[ 
                         {
                             label:"10",
                             className:"normal",
                             callback: () => {
                                 mise = 10;
                                 currentPopup.close();
-                                action_paris(value,mise,2.32)
+                                action_paris(match_id, value,mise,draw)
 
                             }
                         },
@@ -138,7 +148,7 @@ WA.onInit().then(async () => {
                             callback: () => {
                                 mise = 50;
                                 currentPopup.close();
-                                action_paris(value,mise,2.32)
+                                action_paris(match_id, value,mise,draw)
 
                             }
                         },
@@ -148,7 +158,7 @@ WA.onInit().then(async () => {
                             callback: () => {
                                 mise = 100;
                                 currentPopup.close();
-                                action_paris(value,mise,2.32)
+                                action_paris(match_id, value,mise,draw)
                             }
                         }
                     ])
